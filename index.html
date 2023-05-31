@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+
+    <body class="body">
+
+        <div class="encriptador">
+            
+            <div class="logoalura">
+                <img src="C:\Fabri\Curso_Alura\Challenge\archivos_challenge\Vector.png" alt="Logo alura">
+
+            </div>
+                  
+            <div>
+                <textarea class="textarea1" id="textarea1" name="textarea1" placeholder="Ingrese el texto aquí"></textarea>
+            </div>
+            
+            <div>
+                <img class="signo" src="C:\Fabri\Curso_Alura\Challenge\archivos_challenge\bi_exclamation-circle-fill.png" alt="Exclamation-circle">
+                <label class="advertencia" for="button1">Sólo letras minúsculas y sin acentos.</label>
+                <button type="submit" class="button1" id="button1" name="button1">Encriptar</button>
+                <button type="submit" class="button2" id="button2" name="button2">Desencriptar</button>
+            </div>
+
+            <div>
+                <img class="rectangulo-costado" src="C:\Fabri\Curso_Alura\Challenge\archivos_challenge\Rectangle 1.png" alt="Panel">
+                <img class="munieco" id="munieco" src="C:\Fabri\Curso_Alura\Challenge\archivos_challenge\Munieco.png" alt="Muñeco" width="250">
+                <label class="mensaje1" id="mensaje1" for="rectangulo-costado">Ningún mensaje fue encontrado.</label>
+                <label class="mensaje2" id="mensaje2" for="rectangulo-costado">Ingresa el texto que deseas encriptar o desencriptar.</label>
+                <textarea class="textarea2" id="textarea2" name="textarea2"></textarea>
+                <button type="submit" class="button3" id="button3" name="button3">Copiar</button>
+            </div>
+            
+            <!-- style="display:none;" -->
+            
+        </div>
+
+
+    </body>
+
+    <script>
+        var textarea1 = document.querySelector(".textarea1");
+        var button1 = document.querySelector(".button1")
+
+        var button1 = document.getElementById('button1');
+        var button2 = document.getElementById('button2');
+        var button3 = document.getElementById('button3');
+        var textarea2 = document.getElementById('textarea2');
+        var munieco = document.getElementById('munieco');
+        var mensaje1 = document.getElementById('mensaje1');
+        var mensaje2 = document.getElementById('mensaje2');
+        
+        button1.addEventListener('click', function() {
+            textarea2.style.display = "block";
+            munieco.style.display = "none";
+            mensaje1.style.display = "none";
+            mensaje2.style.display = "none";
+        }
+        )
+
+        button2.addEventListener('click', function() {
+            textarea2.style.display = "block";
+            munieco.style.display = "none";
+            mensaje1.style.display = "none";
+            mensaje2.style.display = "none";
+        }
+        )
+
+        function copiar(){
+            textarea2.select();
+            textarea2.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(textarea2.value);
+        }
+
+        // Función "desencriptar" hecha con la función replaceAll, más abajo está la función
+        // "encriptar" hecha de forma más rudimentaria.
+        function desencriptar(){
+            var texto=textarea1.value;
+            texto2=texto.replaceAll("enter", "e");
+            texto3=texto2.replaceAll("imes", "i");
+            texto4=texto3.replaceAll("ai", "a");
+            texto5=texto4.replaceAll("ober", "o");
+            texto6=texto5.replaceAll("ufat", "u");
+            textarea2.value=texto6;
+        }
+
+
+
+        function encriptar(){
+
+            var texto=textarea1.value;                
+            var texto2="";
+            var texto3="";
+            var texto4="";
+            var texto5="";
+            var texto6="";
+            var texto7="";
+            var texto8="";
+            var texto9="";
+            var texto10="";
+            var texto11="";
+
+            for (y in texto){
+                if (texto[y]=="e"){
+                    texto2=texto.slice((texto[y]-1),(texto[y]+1));
+                    texto3=texto3+"enter"+texto2;
+                }
+                else{
+                    texto3=texto3+texto[y];
+                }
+            }
+
+            for (y in texto3){
+                if (texto3[y]=="i"){
+                    texto4=texto3.slice((texto3[y]-1),(texto3[y]+1));
+                    texto5=texto5+"imes"+texto4;
+                }
+                else{
+                    texto5=texto5+texto3[y];
+                }
+            }
+
+            for (y in texto5){
+                if (texto5[y]=="a"){
+                    texto6=texto5.slice((texto5[y]-1),(texto5[y]+1));
+                    texto7=texto7+"ai"+texto6;
+                }
+                else{
+                    texto7=texto7+texto5[y];
+                }
+            }
+            
+            for (y in texto7){
+                if (texto7[y]=="o"){
+                    texto8=texto7.slice((texto7[y]-1),(texto7[y]+1));
+                    texto9=texto9+"ober"+texto8;
+                }
+                else{
+                    texto9=texto9+texto7[y];
+                }
+            }
+
+            for (y in texto9){
+                if (texto9[y]=="u"){
+                    texto10=texto9.slice((texto9[y]-1),(texto9[y]+1));
+                    texto11=texto11+"ufat"+texto10;
+                }
+                else{
+                    texto11=texto11+texto9[y];
+                }
+            }
+            
+            textarea2.value=texto11;
+        }
+
+
+
+        
+
+
+
+        button1.onclick = encriptar;
+        button2.onclick = desencriptar;
+        button3.onclick = copiar;
+        
+        
+        
+    </script>
